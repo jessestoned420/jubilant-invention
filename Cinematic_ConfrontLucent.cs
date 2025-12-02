@@ -186,6 +186,11 @@ using TMPro;
 /// "Intelligence indicates that the Fallen Star, Lucent, has breached the shattered realm of ƁÅČ̣ĤÎŘØN̈. He seeks a forgotten celestial engine at its core, a primordial device with the power to tune the resonant frequency of reality itself. His goal is to attune the engine to the entropic signature of the Void, causing a cascading corruption that would rewrite the entire Verse into a domain of chaos and erasure. Amidst the gravity-defying crystalline archipelago and under the silent gaze of its faceless keepers, the ƁÅČĤĪŘĪM, the heroes must intervene before Lucent can complete his blasphemous work."
 /// It handles dialogue, character animations, and camera cuts for the confrontation with Lucent.
 /// </summary>
+/// <remarks>
+/// This class orchestrates a complex cinematic sequence involving multiple characters, UI elements, and timeline events.
+/// It is designed to be attached to a central "SceneController" GameObject in a Unity scene.
+/// The script assumes that all required character GameObjects, AudioSources, and UI components are assigned in the Inspector.
+/// </remarks>
 public class Cinematic_ConfrontLucent : MonoBehaviour
 {
     // ====================================================================
@@ -206,7 +211,13 @@ public class Cinematic_ConfrontLucent : MonoBehaviour
      * Tone & Style: Driven, Loving, Determined. Underlying sorrow/weariness.
      * Keywords: Digital, Bionic, Precise, Loving, Clear Articulation, Subtle Filter.
     */
+    /// <summary>
+    /// The GameObject representing the character Sky.ix.
+    /// </summary>
     public GameObject Skyix_Character;
+    /// <summary>
+    /// The AudioSource component for Sky.ix's voice lines.
+    /// </summary>
     public AudioSource Skyix_VoiceSource;
 
 
@@ -222,7 +233,13 @@ public class Cinematic_ConfrontLucent : MonoBehaviour
      * Tone & Style: Passionate, Driven, Hopeful, Assertive. Often sounds pleading or arguing.
      * Keywords: Youthful, Assertive, Passionate, Energetic, Tenor, Strong Projection.
     */
+    /// <summary>
+    /// The GameObject representing the character Micah.
+    /// </summary>
     public GameObject Micah_Character;
+    /// <summary>
+    /// The AudioSource component for Micah's voice lines.
+    /// </summary>
     public AudioSource Micah_VoiceSource;
 
 
@@ -238,7 +255,13 @@ public class Cinematic_ConfrontLucent : MonoBehaviour
      * Tone & Style: Cryptic, Calm, Profound, and Fatalistic. Speaks in metaphor.
      * Keywords: Ancient, Layered, Slow, Resonant, Cryptic, Contemplative.
     */
+    /// <summary>
+    /// The GameObject representing the character Kai.
+    /// </summary>
     public GameObject Kai_Character;
+    /// <summary>
+    /// The AudioSource component for Kai's voice lines.
+    /// </summary>
     public AudioSource Kai_VoiceSource;
 
 
@@ -249,7 +272,13 @@ public class Cinematic_ConfrontLucent : MonoBehaviour
     /* VOICE PROFILE:
      * Not available.
     */
+    /// <summary>
+    /// The GameObject representing the character Lucent.
+    /// </summary>
     public GameObject Lucent_Character;
+    /// <summary>
+    /// The AudioSource component for Lucent's voice lines.
+    /// </summary>
     public AudioSource Lucent_VoiceSource;
 
 
@@ -260,7 +289,13 @@ public class Cinematic_ConfrontLucent : MonoBehaviour
     /* VOICE PROFILE:
      * Not available.
     */
+    /// <summary>
+    /// The GameObject representing the character Ingris.
+    /// </summary>
     public GameObject Ingris_Character;
+    /// <summary>
+    /// The AudioSource component for Ingris's voice lines.
+    /// </summary>
     public AudioSource Ingris_VoiceSource;
 
 
@@ -276,7 +311,13 @@ public class Cinematic_ConfrontLucent : MonoBehaviour
      * Tone & Style: Regal, Encouraging, Loyal, Measured Authority.
      * Keywords: Regal, Deep Resonance, Authority, Commanding, Steady Tempo.
     */
+    /// <summary>
+    /// The GameObject representing the character Aeron.
+    /// </summary>
     public GameObject Aeron_Character;
+    /// <summary>
+    /// The AudioSource component for Aeron's voice lines.
+    /// </summary>
     public AudioSource Aeron_VoiceSource;
 
 
@@ -292,7 +333,13 @@ public class Cinematic_ConfrontLucent : MonoBehaviour
      * Tone & Style: Uncompromising, Highly Formal, Logical, Final.
      * Keywords: Judgment, Finality, Cold, Unwavering, Precision.
     */
+    /// <summary>
+    /// The GameObject representing the character Zaia.
+    /// </summary>
     public GameObject Zaia_Character;
+    /// <summary>
+    /// The AudioSource component for Zaia's voice lines.
+    /// </summary>
     public AudioSource Zaia_VoiceSource;
 
 
@@ -308,7 +355,13 @@ public class Cinematic_ConfrontLucent : MonoBehaviour
      * Tone & Style: Cynical, Weary, and Vengeful. Uses harsh, short sentences.
      * Keywords: Gravel, Vengeance, Weary, Corrupted, Low Resonance.
     */
+    /// <summary>
+    /// The GameObject representing the character Otis/X.
+    /// </summary>
     public GameObject OtisX_Character;
+    /// <summary>
+    /// The AudioSource component for Otis/X's voice lines.
+    /// </summary>
     public AudioSource OtisX_VoiceSource;
 
 
@@ -319,14 +372,33 @@ public class Cinematic_ConfrontLucent : MonoBehaviour
     /* VOICE PROFILE:
      * Not available.
     */
+    /// <summary>
+    /// The GameObject representing the character Otis.
+    /// </summary>
     public GameObject Otis_Character;
+    /// <summary>
+    /// The AudioSource component for Otis's voice lines.
+    /// </summary>
     public AudioSource Otis_VoiceSource;
 
     [Header("UI Components")]
+    /// <summary>
+    /// The parent UI GameObject that contains the dialogue text elements.
+    /// </summary>
     public GameObject DialogueBox;
+    /// <summary>
+    /// The TextMeshPro component used to display the current speaker's name.
+    /// </summary>
     public TextMeshProUGUI SpeakerNameText;
+    /// <summary>
+    /// The TextMeshPro component used to display the dialogue content.
+    /// </summary>
     public TextMeshProUGUI DialogueText;
 
+    /// <summary>
+    /// Called by Unity when the script instance is being loaded.
+    /// Initiates the cinematic sequence.
+    /// </summary>
     void Start()
     {
         StartCoroutine(Cinematic_ConfrontLucent_Sequence());
